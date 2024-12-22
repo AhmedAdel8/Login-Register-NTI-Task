@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nti_flutter21/src/Features/login/view/widgets/custom_row.dart';
 import 'package:nti_flutter21/src/core/style/size_app.dart';
-import 'package:nti_flutter21/src/core/style/widgets/custom_text_form.dart';
+import 'package:nti_flutter21/src/core/widgets/custom_text_form.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

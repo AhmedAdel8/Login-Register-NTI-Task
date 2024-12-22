@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nti_flutter21/src/core/style/widgets/border_text_field.dart';
+import 'package:nti_flutter21/src/core/widgets/border_text_field.dart';
 
 class CustomTextForm extends StatelessWidget {
   const CustomTextForm({
