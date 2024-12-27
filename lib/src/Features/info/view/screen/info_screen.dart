@@ -1,34 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nti_flutter21/src/Features/login/view/widgets/custom_row.dart';
+import 'package:nti_flutter21/src/Features/info/view/widgets/custom_button_info.dart';
 import 'package:nti_flutter21/src/core/model/controller_model.dart';
 import 'package:nti_flutter21/src/core/model/register_login_model.dart';
 import 'package:nti_flutter21/src/core/style/size_app.dart';
 import 'package:nti_flutter21/src/core/widgets/custom_text_form.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class InfoScreen extends StatefulWidget {
+  const InfoScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<InfoScreen> createState() => _InfoScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _InfoScreenState extends State<InfoScreen> {
   GlobalKey<FormState> formstate = GlobalKey<FormState>();
 
-  bool secourtext = true;
+  @override
+  void initState() {
+    super.initState();
+    name.addListener(() {
+      setState(() {});
+    });
+    date.addListener(() {
+      setState(() {});
+    });
+  }
 
   @override
   void dispose() {
-    email.dispose();
-    password.dispose();
+    name.dispose();
+    date.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: appBarName(),
       body: Padding(
         padding: EdgeInsets.only(top: 50, left: 20, right: 20),
         child: Form(
@@ -38,22 +45,11 @@ class _LoginScreenState extends State<LoginScreen> {
               SliverToBoxAdapter(
                 child: Text(
                   textAlign: TextAlign.center,
-                  "Log in",
+                  "Infromation",
                   style: TextStyle(
                     fontSize: SizeApp.s33,
                     fontFamily: "myfont",
                   ),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  height: 35,
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: SvgPicture.asset(
-                  "assets/images/login.svg",
-                  width: 288,
                 ),
               ),
               SliverToBoxAdapter(
@@ -70,48 +66,47 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 10,
                     );
                   },
-                  itemCount: login.length,
+                  itemCount: info.length,
                   itemBuilder: (context, index) {
-                    return CustomTextForm(registerandloginModel: login[index]);
+                    return CustomTextForm(registerandloginModel: info[index]);
                   },
                 ),
               ),
               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 17,
+                  height: 15,
                 ),
               ),
               SliverToBoxAdapter(
-                child: MaterialButton(
-                  minWidth: double.infinity,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(27)),
-                  onPressed: () {
-                    if (formstate.currentState!.validate()) {
-                      Navigator.of(context).pushReplacementNamed('info');
-                    } else {
-                      print('Not valid');
-                    }
-                  },
-                  height: 55,
-                  color: Colors.purple[800],
-                  child: Text(
-                    "log in",
-                    style: TextStyle(
-                      fontFamily: "myfont",
-                      fontSize: SizeApp.s22,
-                      color: Colors.white,
-                    ),
+                child: Text(
+                  'Name: ${name.text} ',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
               SliverToBoxAdapter(
                 child: SizedBox(
-                  height: 13,
+                  height: 5,
                 ),
               ),
               SliverToBoxAdapter(
-                child: CustomRowLogin(),
+                child: Text(
+                  'date: ${date.text}',
+                  style: TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: SizedBox(
+                  height: 15,
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: CustomButtonInfo(formstate: formstate),
               ),
             ],
           ),

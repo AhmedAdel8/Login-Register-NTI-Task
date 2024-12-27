@@ -1,40 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:nti_flutter21/src/core/model/register_login_model.dart';
 import 'package:nti_flutter21/src/core/widgets/border_text_field.dart';
 
 class CustomTextForm extends StatelessWidget {
   const CustomTextForm({
     super.key,
-    required this.hinttext,
-    required this.mycontroller,
-    this.suffixIcon,
-    required this.validator,
-    required this.obscureText,
-    this.prefixIcon,
-    this.inputType,
+    required this.registerandloginModel,
   });
-
-  final String hinttext;
-  final TextEditingController mycontroller;
-  final String? Function(String?)? validator;
-  final IconButton? suffixIcon;
-  final IconButton? prefixIcon;
-  final bool obscureText;
-  final TextInputType? inputType;
-
+  final RegisterandLoginModel registerandloginModel;
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextFormField(
-          keyboardType: inputType,
-          obscureText: obscureText,
-          validator: validator,
-          controller: mycontroller,
+          keyboardType: registerandloginModel.inputType,
+          obscureText: registerandloginModel.obscureText,
+          validator: registerandloginModel.validator,
+          controller: registerandloginModel.mycontroller,
           decoration: InputDecoration(
-            suffixIcon: suffixIcon,
-            prefixIcon: prefixIcon,
-            hintText: hinttext,
+            label: Text(""),
+            suffixIcon: registerandloginModel.suffixIcon,
+            prefixIcon: registerandloginModel.prefixIcon,
+            hintText: registerandloginModel.hinttext,
             hintStyle: const TextStyle(
               color: Colors.grey,
             ),

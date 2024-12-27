@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:nti_flutter21/src/Features/info/view/screen/info_screen.dart';
 import 'package:nti_flutter21/src/Features/login/view/screen/login_screen.dart';
 import 'package:nti_flutter21/src/Features/register/view/screen/register_screen.dart';
+import 'package:nti_flutter21/src/Features/splash/view/screen/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,10 +27,12 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: LoginScreen(),
+      home: SplashScreen(),
       routes: {
+        'splash': (context) => const SplashScreen(),
         'signup': (context) => const RegisterScreen(),
         'login': (context) => const LoginScreen(),
+        'info': (context) => const InfoScreen(),
       },
     );
   }
